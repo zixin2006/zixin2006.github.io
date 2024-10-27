@@ -482,13 +482,13 @@ body {
   background-image: linear-gradient(transparent, transparent 5px, #cfd0d1 5px, #cfd0d1);
 }
 .content a:hover {
-  background-image: linear-gradient(transparent, transparent 4px, #d41c46 4px, #d41c46);
+  background-image: linear-gradient(transparent, transparent 4px, rgba(192,177,250,0.8) 4px, rgba(192,177,250,0.8));
 }
 .content a.icon {
   background: none;
 }
 .content a.icon:hover {
-  color: #d41c46;
+  color: rgba(192,177,250,0.8);
 }
 .content h1 a,
 .content .h1 a,
@@ -511,7 +511,7 @@ body {
   background-repeat: repeat-x;
   background-position: bottom;
   background-size: 100% 6px;
-  background-image: linear-gradient(transparent, transparent 6px, #d41c46 6px, #d41c46);
+  background-image: linear-gradient(transparent, transparent 6px, rgba(192,177,250,0.8) 6px, rgba(192,177,250,0.8));
 }
 @media (min-width: 540px) {
   .image-wrap {
@@ -667,7 +667,7 @@ body {
   background: none;
 }
 #header-post a.icon:hover {
-  color: #d41c46;
+  color: rgba(192,177,250,0.8);
 }
 #header-post ol {
   list-style-type: none;
@@ -777,7 +777,7 @@ body {
   float: right;
 }
 #header-post #toc a:hover {
-  color: #d41c46;
+  color: rgba(192,177,250,0.8);
 }
 #header-post #toc .toc-level-1 {
   color: #cfd0d1;
@@ -868,7 +868,7 @@ body {
   background: none;
 }
 #footer-post a.icon:hover {
-  color: #d41c46;
+  color: rgba(192,177,250,0.8);
 }
 #footer-post #nav-footer {
   margin-left: 1rem;
@@ -949,7 +949,7 @@ body {
   line-height: 30px;
 }
 #footer-post #toc-footer a:hover {
-  color: #d41c46;
+  color: rgba(192,177,250,0.8);
 }
 #footer-post #toc-footer .toc-level-1 {
   color: #cfd0d1;
