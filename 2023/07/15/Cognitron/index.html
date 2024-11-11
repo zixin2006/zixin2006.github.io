@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="In the last article on the perceptron, we discussed how the backpropagation algorithm adjusts the states of hidden units, allowing neural connections to learn and adapt their states, thus solving line">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tracing Back to the Roots | Back-propagation &quot;Learning representations by back-propagating errors&quot;（1986)">
+<meta property="og:url" content="https://zixin2006.github.io/2023/07/15/Cognitron/index.html">
+<meta property="og:site_name" content="Zixin&#39;s Multiverse.">
+<meta property="og:description" content="In the last article on the perceptron, we discussed how the backpropagation algorithm adjusts the states of hidden units, allowing neural connections to learn and adapt their states, thus solving line">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://github.com/zixin2006/wfla-mathematical-blossoms-visual-library/tree/main/images/tbto.png">
+<meta property="og:image" content="https://github.com/zixin2006/wfla-mathematical-blossoms-visual-library/tree/main/images/tbto.png">
+<meta property="og:image" content="https://github.com/zixin2006/wfla-mathematical-blossoms-visual-library/tree/main/images/tbto.png">
+<meta property="og:image" content="https://github.com/zixin2006/wfla-mathematical-blossoms-visual-library/tree/main/images/tbto.png">
+<meta property="og:image" content="https://github.com/zixin2006/wfla-mathematical-blossoms-visual-library/tree/main/images/tbto.png">
+<meta property="og:image" content="https://github.com/zixin2006/wfla-mathematical-blossoms-visual-library/tree/main/images/tbto.png">
+<meta property="og:image" content="https://github.com/zixin2006/wfla-mathematical-blossoms-visual-library/tree/main/images/tbto.png">
+<meta property="article:published_time" content="2023-07-15T03:30:42.000Z">
+<meta property="article:modified_time" content="2024-11-11T03:02:59.764Z">
+<meta property="article:author" content="Zixin Yu">
+<meta property="article:tag" content="Academics">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/zixin2006/wfla-mathematical-blossoms-visual-library/tree/main/images/tbto.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/me.png">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Tracing Back to the Roots | Back-propagation &#34;Learning representations by back-propagating errors&#34;（1986)</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+
+    
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    
+<script src="/lib/jquery/jquery.min.js"></script>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.1.1"></head>
+
+<body>
+    <div class="banner">
+<div id="blogtitel" class="blogtitel">Zixin&#39;s Multiverse.</div>
+<ul id="wrapper" class="wrapper">
+  <div class="sun">
+    <div class="star"></div>
+  </div>
+  <div class="mercury">
+    <div class="planet">
+      <div class="shadow"></div>
+    </div>
+  </div>
+  <div class="venus">
+    <div class="planet">
+      <div class="shadow"></div>
+    </div>
+  </div>
+  <div class="earth">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="mars">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="jupiter">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+</ul>
+</div>
+
+    <div class="background">
+      
+        <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="http://github.com/zixin2006">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2023/05/01/Backprop/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://zixin2006.github.io/2023/07/15/Cognitron/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://zixin2006.github.io/2023/07/15/Cognitron/&text=Tracing Back to the Roots | Back-propagation &#34;Learning representations by back-propagating errors&#34;（1986)"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://zixin2006.github.io/2023/07/15/Cognitron/&title=Tracing Back to the Roots | Back-propagation &#34;Learning representations by back-propagating errors&#34;（1986)"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zixin2006.github.io/2023/07/15/Cognitron/&is_video=false&description=Tracing Back to the Roots | Back-propagation &#34;Learning representations by back-propagating errors&#34;（1986)"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Tracing Back to the Roots | Back-propagation &#34;Learning representations by back-propagating errors&#34;（1986)&body=Check out this article: https://zixin2006.github.io/2023/07/15/Cognitron/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://zixin2006.github.io/2023/07/15/Cognitron/&title=Tracing Back to the Roots | Back-propagation &#34;Learning representations by back-propagating errors&#34;（1986)"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://zixin2006.github.io/2023/07/15/Cognitron/&title=Tracing Back to the Roots | Back-propagation &#34;Learning representations by back-propagating errors&#34;（1986)"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://zixin2006.github.io/2023/07/15/Cognitron/&title=Tracing Back to the Roots | Back-propagation &#34;Learning representations by back-propagating errors&#34;（1986)"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://zixin2006.github.io/2023/07/15/Cognitron/&title=Tracing Back to the Roots | Back-propagation &#34;Learning representations by back-propagating errors&#34;（1986)"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://zixin2006.github.io/2023/07/15/Cognitron/&name=Tracing Back to the Roots | Back-propagation &#34;Learning representations by back-propagating errors&#34;（1986)&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+      
+      <div class="content index width mx-auto px2 my4">
+          
+          <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Tracing Back to the Roots | Back-propagation &#34;Learning representations by back-propagating errors&#34;（1986)
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Zixin's Multiverse.</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2023-07-15T03:30:42.000Z" itemprop="datePublished">2023-07-15</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Academics/" rel="tag">Academics</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>In the last article on the perceptron, we discussed how the backpropagation algorithm adjusts the states of hidden units, allowing neural connections to learn and adapt their states, thus solving linearly inseparable problems. Now, we introduce a neural network with visual capabilities (such as feature extraction) and explore the early concepts that hint at Convolutional Neural Networks (CNNs). This article will cover the 1975 paper by Japanese computer scientist Kunihiko Fukushima titled <em>Cognitron: A Self-organizing Multilayered Neural Network</em> [1]. </p>
+<p><strong>Quick Summary</strong></p>
+<p>The key innovations of this paper are as follows:</p>
+<ul>
+<li>Introduced a new hypothesis for synaptic organization in neurons: <strong>Only if a neuron $y$ is activated by neuron $x$ and no other nearby neuron has a stronger response, will the synapse between $x$ and $y$ strengthen</strong>.</li>
+<li>Introduced the concept of <strong>receptive fields</strong>, using two-dimensional neural network layers where each neuron receives input from a specific area of the previous layer. Based on this new hypothesis, it compares activation strength and strengthens synaptic connections, layer by layer, to build complex feature representations.</li>
+<li>Based on these hypotheses, the author derived a new algorithm to effectively organize multilayer neural networks, creating a self-organizing network called Cognitron. Cognitron’s advantage lies in its ability to <strong>learn in an unsupervised manner</strong> by automatically adjusting synaptic weights, enabling higher-level feature extraction from local features and achieving self-organized recognition capabilities for complex patterns.</li>
+</ul>
+<p>The following sections will discuss the author’s motivations, modeling approach, and results in detail.</p>
+<p><strong>Introduction</strong></p>
+<p>The paper opens with an explanation of <strong>neural plasticity</strong>: the synaptic connections of neurons in the brain are not entirely genetically determined but are malleable and shaped by learning or postnatal experiences. Studies by Hubel and Wiesel demonstrated that neurons in the visual cortex of normal adult cats exhibit selective sensitivity to lines and edges in the visual field, with preferences uniformly distributed across all directions. However, kittens raised in an environment consisting only of black and white stripes did not develop neurons responsive to directions perpendicular to those stripes (Blake &amp; Cooper, 1970). This indicates that a lack of certain visual experiences can result in impaired neuronal responses, suggesting that <strong>the response characteristics of visual cortex neurons are adjusted through visual experiences during development</strong>. In neural networks, this natural plasticity is equivalent to <strong>self-organization</strong>, meaning the network can update weights and adjust synaptic connections without supervision.</p>
+<p>At this point, you might recall the neuron properties in the perceptron, which seem to allow for self-adjustment of synaptic connections. However, because the original perceptron only has four parts—the input layer, projection area, association area, and response layer—and only the last two parts are randomly modifiable, the entire neural network does not have complete self-organizing capabilities. The perceptron was highly anticipated at the time but proved less powerful than initially hoped.</p>
+<p><img src="https://github.com/zixin2006/wfla-mathematical-blossoms-visual-library/tree/main/images/tbto.png" alt="Image"><br><strong>Figure 1: Rosenblatt’s 1957 Perceptron [2].</strong></p>
+<p>What about adding more layers? As we know, adding more layers to a neural network can significantly enhance its ability to extract higher-level information. However, when Fukushima wrote this paper, there was no algorithm to enable self-organization in multilayer neural networks (although this was later achieved by the backpropagation algorithm). Therefore, systems claiming self-organization did not fundamentally go beyond the three-layer perceptron framework.</p>
+<p>To solve these problems and achieve unsupervised learning, the author proposed a new hypothesis to model synaptic strengthening.</p>
+<p><strong>Hypothesis</strong></p>
+<p>Before introducing the new hypothesis, let’s examine the issues with prior assumptions, which the author categorized into three types:</p>
+<ul>
+<li>Synapse $c_i$ starts in a modifiable state, but if postsynaptic neuron $y$ is activated without the activation of presynaptic neuron $x_i$, $c_i$ becomes inactive and no longer modifiable.</li>
+<li>Synapse $c_i$ has a random initial component, and only when both presynaptic cell $x$ and postsynaptic cell $y$ are activated, does $c_i$ strengthen. This type of synapse is known as a Brindley synapse.</li>
+<li>The postsynaptic cell $y$ has another synaptic input $z$, known as a Hebbian synapse, which is initially inactive and only strengthens when both presynaptic cell $x$ and the control signal $z$ are active (this model assumes $z$ as a “supervisor”).</li>
+</ul>
+<p><img src="https://github.com/zixin2006/wfla-mathematical-blossoms-visual-library/tree/main/images/tbto.png" alt="Image"><br><strong>Figure 2: Mechanisms of three synapse types.</strong></p>
+<p>The first assumption is highly problematic: if a single incorrect signal occurs, the synapse could irreversibly change, potentially rendering the network functionally “extinct” over time. Brindley synapses offer partial self-organization, but the randomness of initial synapses may not ensure meaningful connection patterns, and large-scale networks have not proven Brindley synapse effectiveness. Hebbian synapses rely on an external supervisor signal $z$, which is biologically unreasonable.</p>
+<p>To address these issues, the author proposed a new hypothesis. For synapse strengthening between neurons $x$ and $y$ via synapse $c_i$, two conditions are required:</p>
+<ol>
+<li>Presynaptic neuron $x$ of synapse $c_i$ is activated.</li>
+<li>None of the neurons near postsynaptic neuron $y$ respond more strongly than $y$.</li>
+</ol>
+<p>Condition two implies that synaptic strengthening is unique within its local neighborhood. This uniqueness allows each neuron in the network to develop a distinct response, enhancing the network’s <strong>feature differentiation ability</strong>. Moreover, if a neuron malfunctions, other neurons can take over its role, similar to self-repair functions in biological neural networks. This new hypothesis, akin to the brain’s mechanism of supplying nutrients only to the most responsive neurons, also has biological plausibility.</p>
+<p>Next, let’s model the neurons and network structure.</p>
+<p><strong>Neuron Modeling</strong></p>
+<p>The neurons in the Cognitron use a “shunting inhibition” mechanism. In traditional linear inhibition, if an excitatory signal $E$ and an inhibitory signal $I$ are present, the final pulse strength is generally represented as $E - I$. Shunting inhibition refines this response, preventing over-activation by using a division-based model. The final output behaves similarly to an activation function, producing non-negative values proportional to the pulse strength. Denote $u(1), \ldots, u(N)$ as inputs from excitatory synapses and $v(1), \ldots, v(M)$ as inputs from inhibitory synapses. Each neuron’s output $w$ is defined as:</p>
+<mjx-container class="MathJax" jax="SVG" display="true"><svg style="vertical-align: -3.073ex;" xmlns="http://www.w3.org/2000/svg" width="33.835ex" height="7.062ex" role="img" focusable="false" viewBox="0 -1763.3 14955.3 3121.4" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-1-TEX-I-1D464" d="M580 385Q580 406 599 424T641 443Q659 443 674 425T690 368Q690 339 671 253Q656 197 644 161T609 80T554 12T482 -11Q438 -11 404 5T355 48Q354 47 352 44Q311 -11 252 -11Q226 -11 202 -5T155 14T118 53T104 116Q104 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Q21 293 29 315T52 366T96 418T161 441Q204 441 227 416T250 358Q250 340 217 250T184 111Q184 65 205 46T258 26Q301 26 334 87L339 96V119Q339 122 339 128T340 136T341 143T342 152T345 165T348 182T354 206T362 238T373 281Q402 395 406 404Q419 431 449 431Q468 431 475 421T483 402Q483 389 454 274T422 142Q420 131 420 107V100Q420 85 423 71T442 42T487 26Q558 26 600 148Q609 171 620 213T632 273Q632 306 619 325T593 357T580 385Z"></path><path id="MJX-1-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-1-TEX-I-1D711" d="M92 210Q92 176 106 149T142 108T185 85T220 72L235 70L237 71L250 112Q268 170 283 211T322 299T370 375T429 423T502 442Q547 442 582 410T618 302Q618 224 575 152T457 35T299 -10Q273 -10 273 -12L266 -48Q260 -83 252 -125T241 -179Q236 -203 215 -212Q204 -218 190 -218Q159 -215 159 -185Q159 -175 214 -2L209 0Q204 2 195 5T173 14T147 28T120 46T94 71T71 103T56 142T50 190Q50 238 76 311T149 431H162Q183 431 183 423Q183 417 175 409Q134 361 114 300T92 210ZM574 278Q574 320 550 344T486 369Q437 369 394 329T323 218Q309 184 295 109L286 64Q304 62 306 62Q423 62 498 131T574 278Z"></path><path id="MJX-1-TEX-S4-5B" d="M269 -1249V1750H577V1677H342V-1176H577V-1249H269Z"></path><path id="MJX-1-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-1-TEX-N-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path id="MJX-1-TEX-SO-2211" d="M61 748Q64 750 489 750H913L954 640Q965 609 976 579T993 533T999 516H979L959 517Q936 579 886 621T777 682Q724 700 655 705T436 710H319Q183 710 183 709Q186 706 348 484T511 259Q517 250 513 244L490 216Q466 188 420 134T330 27L149 -187Q149 -188 362 -188Q388 -188 436 -188T506 -189Q679 -189 778 -162T936 -43Q946 -27 959 6H999L913 -249L489 -250Q65 -250 62 -248Q56 -246 56 -239Q56 -234 118 -161Q186 -81 245 -11L428 206Q428 207 242 462L57 717L56 728Q56 744 61 748Z"></path><path id="MJX-1-TEX-I-1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path><path id="MJX-1-TEX-I-1D463" d="M173 380Q173 405 154 405Q130 405 104 376T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Q21 294 29 316T53 368T97 419T160 441Q202 441 225 417T249 361Q249 344 246 335Q246 329 231 291T200 202T182 113Q182 86 187 69Q200 26 250 26Q287 26 319 60T369 139T398 222T409 277Q409 300 401 317T383 343T365 361T357 383Q357 405 376 424T417 443Q436 443 451 425T467 367Q467 340 455 284T418 159T347 40T241 -11Q177 -11 139 22Q102 54 102 117Q102 148 110 181T151 298Q173 362 173 380Z"></path><path id="MJX-1-TEX-I-1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path><path id="MJX-1-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-1-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path id="MJX-1-TEX-N-22C5" d="M78 250Q78 274 95 292T138 310Q162 310 180 294T199 251Q199 226 182 208T139 190T96 207T78 250Z"></path><path id="MJX-1-TEX-I-1D462" d="M21 287Q21 295 30 318T55 370T99 420T158 442Q204 442 227 417T250 358Q250 340 216 246T182 105Q182 62 196 45T238 27T291 44T328 78L339 95Q341 99 377 247Q407 367 413 387T427 416Q444 431 463 431Q480 431 488 421T496 402L420 84Q419 79 419 68Q419 43 426 35T447 26Q469 29 482 57T512 145Q514 153 532 153Q551 153 551 144Q550 139 549 130T540 98T523 55T498 17T462 -8Q454 -10 438 -10Q372 -10 347 46Q345 45 336 36T318 21T296 6T267 -6T233 -11Q189 -11 155 7Q103 38 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-1-TEX-I-1D440" d="M289 629Q289 635 232 637Q208 637 201 638T194 648Q194 649 196 659Q197 662 198 666T199 671T201 676T203 679T207 681T212 683T220 683T232 684Q238 684 262 684T307 683Q386 683 398 683T414 678Q415 674 451 396L487 117L510 154Q534 190 574 254T662 394Q837 673 839 675Q840 676 842 678T846 681L852 683H948Q965 683 988 683T1017 684Q1051 684 1051 673Q1051 668 1048 656T1045 643Q1041 637 1008 637Q968 636 957 634T939 623Q936 618 867 340T797 59Q797 55 798 54T805 50T822 48T855 46H886Q892 37 892 35Q892 19 885 5Q880 0 869 0Q864 0 828 1T736 2Q675 2 644 2T609 1Q592 1 592 11Q592 13 594 25Q598 41 602 43T625 46Q652 46 685 49Q699 52 704 61Q706 65 742 207T813 490T848 631L654 322Q458 10 453 5Q451 4 449 3Q444 0 433 0Q418 0 415 7Q413 11 374 317L335 624L267 354Q200 88 200 79Q206 46 272 46H282Q288 41 289 37T286 19Q282 3 278 1Q274 0 267 0Q265 0 255 0T221 1T157 2Q127 2 95 1T58 0Q43 0 39 2T35 11Q35 13 38 25T43 40Q45 46 65 46Q135 46 154 86Q158 92 223 354T289 629Z"></path><path id="MJX-1-TEX-I-1D707" d="M58 -216Q44 -216 34 -208T23 -186Q23 -176 96 116T173 414Q186 442 219 442Q231 441 239 435T249 423T251 413Q251 401 220 279T187 142Q185 131 185 107V99Q185 26 252 26Q261 26 270 27T287 31T302 38T315 45T327 55T338 65T348 77T356 88T365 100L372 110L408 253Q444 395 448 404Q461 431 491 431Q504 431 512 424T523 412T525 402L449 84Q448 79 448 68Q448 43 455 35T476 26Q485 27 496 35Q517 55 537 131Q543 151 547 152Q549 153 557 153H561Q580 153 580 144Q580 138 575 117T555 63T523 13Q510 0 491 -8Q483 -10 467 -10Q446 -10 429 -4T402 11T385 29T376 44T374 51L368 45Q362 39 350 30T324 12T288 -4T246 -11Q199 -11 153 12L129 -85Q108 -167 104 -180T92 -202Q76 -216 58 -216Z"></path><path id="MJX-1-TEX-I-1D44F" d="M73 647Q73 657 77 670T89 683Q90 683 161 688T234 694Q246 694 246 685T212 542Q204 508 195 472T180 418L176 399Q176 396 182 402Q231 442 283 442Q345 442 383 396T422 280Q422 169 343 79T173 -11Q123 -11 82 27T40 150V159Q40 180 48 217T97 414Q147 611 147 623T109 637Q104 637 101 637H96Q86 637 83 637T76 640T73 647ZM336 325V331Q336 405 275 405Q258 405 240 397T207 376T181 352T163 330L157 322L136 236Q114 150 114 114Q114 66 138 42Q154 26 178 26Q211 26 245 58Q270 81 285 114T318 219Q336 291 336 325Z"></path><path id="MJX-1-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path id="MJX-1-TEX-S4-5D" d="M5 1677V1750H313V-1249H5V-1176H240V1677H5Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D464" xlink:href="#MJX-1-TEX-I-1D464"></use></g><g data-mml-node="mo" transform="translate(993.8,0)"><use data-c="3D" xlink:href="#MJX-1-TEX-N-3D"></use></g><g data-mml-node="mi" transform="translate(2049.6,0)"><use data-c="1D711" xlink:href="#MJX-1-TEX-I-1D711"></use></g><g data-mml-node="mrow" transform="translate(2870.2,0)"><g data-mml-node="mo" transform="translate(0 -0.5)"><use data-c="5B" xlink:href="#MJX-1-TEX-S4-5B"></use></g><g data-mml-node="mfrac" transform="translate(583,0)"><g data-mml-node="mrow" transform="translate(286.2,803.3)"><g data-mml-node="mn"><use data-c="31" xlink:href="#MJX-1-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(722.2,0)"><use data-c="2B" xlink:href="#MJX-1-TEX-N-2B"></use></g><g data-mml-node="munderover" transform="translate(1722.4,0)"><g data-mml-node="mo"><use data-c="2211" xlink:href="#MJX-1-TEX-SO-2211"></use></g><g data-mml-node="TeXAtom" transform="translate(1089,477.1) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D441" xlink:href="#MJX-1-TEX-I-1D441"></use></g></g><g data-mml-node="TeXAtom" transform="translate(1089,-285.4) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D463" xlink:href="#MJX-1-TEX-I-1D463"></use></g><g data-mml-node="mo" transform="translate(485,0)"><use data-c="3D" xlink:href="#MJX-1-TEX-N-3D"></use></g><g data-mml-node="mn" transform="translate(1263,0)"><use data-c="31" xlink:href="#MJX-1-TEX-N-31"></use></g></g></g><g data-mml-node="mi" transform="translate(4274.7,0)"><use data-c="1D44E" xlink:href="#MJX-1-TEX-I-1D44E"></use></g><g data-mml-node="mo" transform="translate(4803.7,0)"><use data-c="28" xlink:href="#MJX-1-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(5192.7,0)"><use data-c="1D463" xlink:href="#MJX-1-TEX-I-1D463"></use></g><g data-mml-node="mo" transform="translate(5677.7,0)"><use data-c="29" xlink:href="#MJX-1-TEX-N-29"></use></g><g data-mml-node="mo" transform="translate(6289,0)"><use data-c="22C5" xlink:href="#MJX-1-TEX-N-22C5"></use></g><g data-mml-node="mi" transform="translate(6789.2,0)"><use data-c="1D462" xlink:href="#MJX-1-TEX-I-1D462"></use></g><g data-mml-node="mo" transform="translate(7361.2,0)"><use data-c="28" xlink:href="#MJX-1-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(7750.2,0)"><use data-c="1D463" xlink:href="#MJX-1-TEX-I-1D463"></use></g><g data-mml-node="mo" transform="translate(8235.2,0)"><use data-c="29" xlink:href="#MJX-1-TEX-N-29"></use></g></g><g data-mml-node="mrow" transform="translate(220,-920)"><g data-mml-node="mn"><use data-c="31" xlink:href="#MJX-1-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(722.2,0)"><use data-c="2B" xlink:href="#MJX-1-TEX-N-2B"></use></g><g data-mml-node="munderover" transform="translate(1722.4,0)"><g data-mml-node="mo"><use data-c="2211" xlink:href="#MJX-1-TEX-SO-2211"></use></g><g data-mml-node="TeXAtom" transform="translate(1089,477.1) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D440" xlink:href="#MJX-1-TEX-I-1D440"></use></g></g><g data-mml-node="TeXAtom" transform="translate(1089,-285.4) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D707" xlink:href="#MJX-1-TEX-I-1D707"></use></g><g data-mml-node="mo" transform="translate(603,0)"><use data-c="3D" xlink:href="#MJX-1-TEX-N-3D"></use></g><g data-mml-node="mn" transform="translate(1381,0)"><use data-c="31" xlink:href="#MJX-1-TEX-N-31"></use></g></g></g><g data-mml-node="mi" transform="translate(4358.2,0)"><use data-c="1D44F" xlink:href="#MJX-1-TEX-I-1D44F"></use></g><g data-mml-node="mo" transform="translate(4787.2,0)"><use data-c="28" xlink:href="#MJX-1-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(5176.2,0)"><use data-c="1D707" xlink:href="#MJX-1-TEX-I-1D707"></use></g><g data-mml-node="mo" transform="translate(5779.2,0)"><use data-c="29" xlink:href="#MJX-1-TEX-N-29"></use></g><g data-mml-node="mo" transform="translate(6390.4,0)"><use data-c="22C5" xlink:href="#MJX-1-TEX-N-22C5"></use></g><g data-mml-node="mi" transform="translate(6890.6,0)"><use data-c="1D463" xlink:href="#MJX-1-TEX-I-1D463"></use></g><g data-mml-node="mo" transform="translate(7375.6,0)"><use data-c="28" xlink:href="#MJX-1-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(7764.6,0)"><use data-c="1D707" xlink:href="#MJX-1-TEX-I-1D707"></use></g><g data-mml-node="mo" transform="translate(8367.6,0)"><use data-c="29" xlink:href="#MJX-1-TEX-N-29"></use></g></g><rect width="8956.6" height="60" x="120" y="220"></rect></g><g data-mml-node="mo" transform="translate(10001.8,0)"><use data-c="2212" xlink:href="#MJX-1-TEX-N-2212"></use></g><g data-mml-node="mn" transform="translate(11002.1,0)"><use data-c="31" xlink:href="#MJX-1-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(11502.1,0) translate(0 -0.5)"><use data-c="5D" xlink:href="#MJX-1-TEX-S4-5D"></use></g></g></g></g></svg></mjx-container>
+
+<p>$$<br>w &#x3D; \varphi \left[ \frac{1 + \sum_{v&#x3D;1}^{N} a(v) \cdot u(v)}{1 + \sum_{μ&#x3D;1}^{M} b(μ) \cdot v(μ)} - 1 \right]<br>$$<br>where $a(v)$ and $b(μ)$ are the conductance values for excitatory and inhibitory synapses, both non-negative. $\varphi[x]$ is defined as:<br>$$<br>\varphi[x] &#x3D; \begin{cases}<br>x &amp; \text{if } x \geq 0 \<br>0 &amp; \text{if } x &lt; 0<br>\end{cases}<br>$$<br>Let $e$ represent the sum of all excitatory effects and $h$ the sum of all inhibitory effects:<br>$$<br>e &#x3D; \sum_{v&#x3D;1}^{N} a(v) \cdot u(v), \quad h &#x3D; \sum_{μ&#x3D;1}^{M} b(μ) \cdot v(μ)<br>$$<br>The neuron output formula can be simplified as:<br>$$<br>w &#x3D; \varphi \left[ \frac{1 + e}{1 + h} - 1 \right] &#x3D; \varphi \left( \frac{e - h}{1 + h} \right)<br>$$<br>In the Cognitron, synaptic conductance values $a(v)$ and $b(μ)$ increase over the learning process (which is intuitive); as conductance increases and $e \gg 1$ and $h \gg 1$, the above formula approximates:<br>$$<br>w &#x3D; \varphi \left( \frac{e&#x2F;h - 1}{1&#x2F;h} \right)<br>$$<br>At this point, the output depends on the ratio $e&#x2F;h$, not on their difference. Thus, even if conductance increases with learning, as long as excitatory synapses $a(v)$ and inhibitory synapses $b(μ)$ increase proportionally, the neuron output converges to a stable value instead of diverging. We assume excitatory and inhibitory inputs increase proportionally, represented by:<br>$$<br>e &#x3D; \epsilon x, \quad h &#x3D; \eta x<br>$$<br>where $x$ is the total signal strength. If $\epsilon &gt; \eta$, the neuron output can be transformed as:<br>$$<br>\begin{align*}<br>w &#x3D; \frac{(\epsilon - \eta)x}{1 + \eta x} &amp;&#x3D; \frac{\epsilon - \eta}{2\eta}\cdot \frac{2\eta x}{1+\eta x}\<br>&amp;&#x3D;\frac{\epsilon - \eta}{2\eta}\cdot \left[1+\frac{e^{\ln \eta x}-1}{e^{\ln \eta x}+1}\right ]\<br>&amp;&#x3D;\frac{\epsilon - \eta}{2\eta} \left[1 + \tanh \left(\frac{1}{2} \ln \eta x \right)\right]<br>\end{align*}<br>$$<br>We find that this input-output relationship is consistent with the Weber-Fechner law’s logarithmic relationship, expressed as an S-shaped response curve represented by the tanh function.</p>
+<p><img src="https://github.com/zixin2006/wfla-mathematical-blossoms-visual-library/tree/main/images/tbto.png" alt="Image"><br><strong>Figure 3: The Weber-Fechner Law – perceptual curve vs. physical reality.</strong></p>
+<p>This formula is often used as an empirical formula in neurophysiology to approximate the nonlinear input-output relationships in sensory organs and animal sensory systems. The author believes that since these types of neural elements closely resemble biological neurons, they should be well-suited to various visual and auditory processing systems.</p>
+<p><strong>Cognitron Structure</strong></p>
+<p>Based on the new hypothesis, let’s dive into the structure of Cognitron. Cognitron is composed of multiple neural layers with similar structures, arranged sequentially. The $l$-th layer (labeled $U_l$) consists of excitatory neurons $u_l(\mathbf{n})$ and inhibitory neurons $v_l(\mathbf{n})$, where $\mathbf{n} &#x3D; (n_x, n_y)$ represents the two-dimensional position of neurons.</p>
+<p>The excitatory neuron $u_l(\mathbf{n})$ receives pulses from excitatory neurons $u_{l-1}(\mathbf{n+v}) [\mathbf{v}\in S_l]$ in layer $U_{l-1}$ and from inhibitory neurons $v_{l-1}(\mathbf{n})$. Here, $S_l$ represents the connection area for the neuron, and $\mathbf{n+v}$ represents the coordinates of all excitatory neurons in $S_l$. If we denote the synaptic conductance as $a(\mathbf{v, n})$ and $b(\mathbf{n})$, the output of $u_l(\mathbf{n})$ can be given by the following formula:<br>$$<br>u_l(\mathbf{n}) &#x3D; \varphi \left[ \frac{1 + \sum_{v \in S_l} a(\mathbf{v, n}) \cdot u_{l-1}(\mathbf{n+v})}{1 + b(\mathbf{n}) \cdot v_{l-1}(\mathbf{n})} - 1 \right]<br>$$<br>The inhibitory neuron $v_{l-1}(\mathbf{n})$ receives weighted input from neighboring excitatory neurons $u_{l-1}(\mathbf{n+v})$ and outputs to $u_l(\mathbf{n})$:<br>$$<br>v_{l-1}(\mathbf{n}) &#x3D; \sum_{\mathbf{v} \in S_l} c_{l-1}(\mathbf{v}) \cdot u_{l-1}(\mathbf{n+v})<br>$$<br>where $c_{l-1}(\mathbf{v})$ represents the weight of the inhibitory synapse, with the sum of weights equal to 1:<br>$$<br>\sum_{v \in S_l} c_{l-1}(v) &#x3D; 1<br>$$<br>Figure 4 shows the connections between $U_{l-1}$ and $U_l$.</p>
+<p><img src="https://github.com/zixin2006/wfla-mathematical-blossoms-visual-library/tree/main/images/tbto.png" alt="Image"><br><strong>Figure 4: Visualization of Cognitron Structure.</strong></p>
+<p>It can be seen that the receptive field of neuron $u_l(\mathbf{n})$ overlaps with the receptive fields of the excitatory synapses connected to $u_{l-1}(\mathbf{n})$. Now, let’s model the synaptic strengthening mechanism. Based on the hypothesis, let $\delta(\mathbf{n})$ be a Boolean function indicating whether or not a synapse should be strengthened. If $u_l(\mathbf{n})$ responds more strongly than any other neuron within neighborhood $\Omega_l$, it takes a value of 1:<br>$$<br>\delta(\mathbf{n}) &#x3D; \begin{cases}<br>1 &amp; \text{if} \ \forall \ \mathbf{v} \in \Omega_l, \ u_l(\mathbf{n}) \geq u_l(\mathbf{n+v}) \ \<br>0 &amp; \text{otherwise}<br>\end{cases}<br>$$<br>When $\delta(\mathbf{n}) &#x3D; 1$, the changes in $\Delta a(\mathbf{v, n})$ and $\Delta b(\mathbf{n})$ depend on whether $u_l(\mathbf{n})&#x3D;0$ or $u_l(\mathbf{n}) &gt; 0$.</p>
+<ol>
+<li>When $u_l(\mathbf{n}) &#x3D; 0$<br>$$<br>\begin{align*}<br>\Delta a(\mathbf{v, n}) &amp;&#x3D; q_0 \cdot c_{l-1}(\mathbf{v}) \cdot u_{l-1}(\mathbf{n+v}) \cdot \delta(\mathbf{n}) \<br>\Delta b(\mathbf{n}) &amp;&#x3D; q_0 \cdot v_{l-1}(\mathbf{n}) \cdot \delta(\mathbf{n})<br>\end{align*}<br>$$</li>
+<li>When $u_l(\mathbf{n}) &gt; 0$<br>$$<br>\begin{align*}<br>\Delta a(\mathbf{v, n}) &amp;&#x3D; q_1 \cdot c_{l-1}(\mathbf{v}) \cdot u_{l-1}(\mathbf{n+v}) \cdot \delta(\mathbf{n}) \<br>\Delta b(\mathbf{n}) &amp;&#x3D; \frac{\sum_{\mathbf{v} \in S_l} q_1 \cdot c_{l-1}(\mathbf{v}) \cdot u_{l-1}^2(\mathbf{n+v})}{2v_{l-1}(\mathbf{n})} \cdot \delta(\mathbf{n})<br>\end{align*}<br>$$<br>$q_0$ and $q_1$ are positive constants, with $q_1 &gt; q_0$. In the first case, if $u_l(\mathbf{n})&#x3D;0$ and no neurons in the neighborhood respond, the synaptic strengthening amount is relatively small. In the second case, when $u_l(\mathbf{n}) &gt; 0$, since $q_1 &gt; q_0$, the synaptic strengthening is more significant, with $\Delta b(\mathbf{n})$ suppressed by the <strong>square</strong> of the input signal from the previous layer, thereby moderating the inhibitory synaptic strengthening amount, in line with the “winner-takes-all” rule in the hypothesis.</li>
+</ol>
+<p><strong>Quantitative Analysis of the Algorithm</strong></p>
+<p>The author conducted extensive analysis based on the Cognitron algorithm; here, we summarize some key insights without delving into the detailed analysis:</p>
+<ol>
+<li>After learning, the number of neurons with strong responses significantly decreased, exhibiting <strong>sparsity</strong>, which helps the network distinguish between different input patterns.</li>
+<li>When $u_l(\mathbf{n}) &gt; 0$, excitatory synapses tend to strengthen more than inhibitory synapses; when $u_l(\mathbf{n}) &#x3D; 0$, inhibitory synapses may strengthen more.</li>
+<li>Repeated exposure to the same stimulus enhances the output connections between neurons $u_l(\mathbf{n})$. As $a(\mathbf{v,n})$ gradually increases, the output $w$ approaches 1, indicating that the network has “learned” a specific output pattern.</li>
+</ol>
+<p>In addition to the basic algorithm, the author modeled lateral inhibition phenomena, but for simplicity, this is not covered here. Lateral inhibition reduces the response of surrounding neurons when a neuron responds strongly to a specific stimulus, promoting sparse connections.</p>
+<p><strong>Layer Connections and Axonal Branching</strong></p>
+<p>Finally, let’s define how the network layers connect. This paper discusses three different methods for defining the receptive field of each layer. The first method maintains the same receptive field size at each layer, but to achieve sufficient receptive field coverage, more layers are required, complicating the network structure. The second method increases the receptive field size layer by layer, allowing for larger receptive fields with fewer layers, but the similarity of responses in the final layer (output layer) weakens the network’s ability to distinguish different stimuli.</p>
+<p><img src="https://github.com/zixin2006/wfla-mathematical-blossoms-visual-library/tree/main/images/tbto.png" alt="Image"><br><strong>Figure 5: Three methods of defining layer connections.</strong></p>
+<p>The third method (5c), chosen in this paper, uses probabilistically distributed axonal branches as the layers deepen, extending the receptive field without excessive overlap.</p>
+<p>Cognitron adopts the third method. Suppose each excitatory neuron $u_l(\mathbf{n})$ has $K+1$ axonal branches, where one branch transmits directly forward, while other branches undergo probabilistic displacement. Let $P_{lk}$ be the permutation operator for $\mathbf{n}$. We have:<br>$$<br>u^{\prime}<em>l(\mathbf{n}, k) &#x3D; P</em>{lk} { u_l(\mathbf{n}) } \quad (k \neq 0)<br>$$<br>In computer simulations, this study focused on $K &#x3D; 1$, where the axon divides into two branches, one direct and the other probabilistic.</p>
+<p>The output of axonal branched neurons is redefined as:<br>$$<br>u^{\prime}<em>l(\mathbf{n}) &#x3D; \varphi \left[ \frac{1 + \sum</em>{k&#x3D;0}^{K} \sum_{v \in S_l} a(\mathbf{v, n}, k) \cdot u^{\prime}<em>{l-1}(\mathbf{n+v}, k)}{1 + b_l(\mathbf{n}) \cdot v</em>{l-1}(\mathbf{n})} - 1 \right]<br>$$<br>Other formulas largely remain the same, with the following substitutions:<br>$$<br>\begin{align*}<br>u_{l-1}(\mathbf{n+v}) &amp;\rightarrow u^{\prime}<em>{l-1}(\mathbf{n+v}, k) \<br>a(\mathbf{v, n}) &amp;\rightarrow a(\mathbf{v, n}, k) \<br>c</em>{l-1}(\mathbf{v}) &amp;\rightarrow c_{l-1}(\mathbf{v}, k) \<br>\sum_{\mathbf{v} \in S_l} &amp;\rightarrow \sum_{\mathbf{v} \in S_l} \sum_{k&#x3D;0}^{K}<br>\end{align*}<br>$$</p>
+<p><strong>Computer Simulation and Conclusion</strong></p>
+<p>In the simulation, the author used four network layers, each with $12\times12$ excitatory neurons and the same number of inhibitory neurons. The connection area $S$, neighborhood area $\Omega$, and range of lateral inhibition were all carefully set. The network was exposed to 12x12 images of numbers 0 through 4, with responses recorded at each layer.</p>
+<p><img src="https://github.com/zixin2006/wfla-mathematical-blossoms-visual-library/tree/main/images/tbto.png" alt="Image"><br><strong>Figure 6: Response patterns for numbers 0-4.</strong></p>
+<p>The study found that after multiple exposures, Cognitron could achieve self-organization, with most cells in the deepest layer ($U_3$) selectively responding to specific stimulus patterns.</p>
+<p>To verify the effect of synapse organization, researchers conducted a reverse reconstruction experiment, where the flow of information through synapses was assumed to be reversed, allowing them to observe the responses of each layer’s cells. Results showed that using this method, it was possible not only to <strong>deduce specific numbers from the responses of 144 neurons but also to backtrace input patterns from single cells in deeper layers to earlier layers</strong>, demonstrating that each neuron’s response was unique. This indicates that Cognitron developed a self-organizing ability specific to this task. (Results shown in Figure 7)</p>
+<p><img src="https://github.com/zixin2006/wfla-mathematical-blossoms-visual-library/tree/main/images/tbto.png" alt="Pasted image"><br><strong>Figure 8: Cognitron’s network layer and single neuron reverse inference capabilities when receiving similar stimulus patterns.</strong></p>
+<p>In the final set of experiments, the author explored Cognitron’s ability to respond to similar stimulus patterns (e.g., “X,” “Y,” “T,” and “Z”) using the same testing method as described above. Results showed that even though these letters shared common components (e.g., the head of X and Y, or the tail of Y and T), Cognitron was still able to distinguish between and respond differently to them, indicating its capacity to differentiate similar information.</p>
+<p><strong>A Short Summary</strong></p>
+<p>To summarize, by following a new synaptic organization hypothesis (“winner takes all, loser gets none!” albeit with a hint of humor), Cognitron successfully achieved self-organized learning, with many aspects of its algorithm displaying similarities to the biological brain. Due to its multi-layered structure, Cognitron could handle complex tasks in information processing more effectively than traditional brain models or previous artificial neural networks. However, research also pointed out that Cognitron lacks a complete capability for pattern recognition. For example, to fully enable Cognitron to perform pattern recognition tasks, additional functions such as spatial pattern normalization or completion would be needed—somewhat akin to our aim to achieve AGI. Yet, as we see even in 2024, the road ahead remains challenging.</p>
+<p>Following Cognitron, Kunihiko Fukushima authored another paper introducing “Neocognitron,” an upgraded version of Cognitron designed to make neural network recognition invariant to factors such as image rotation. Feel free to read it if you’re interested!</p>
+<p><strong>Conclusion</strong></p>
+<p>The “Tracing Back” series is now drawing to a close. In the next issue, we’ll cover the foundational language model paper <em>A Neural Probabilistic Language Model</em>, followed by a final issue with code reproductions of key papers. While writing these articles, I noticed an interesting trend: the earlier the work, the more it emphasized the connection between the “biological brain” and the “artificial brain.” In the Cognitron paper, we can see traces of neuroscientific influence throughout, which the researchers leveraged. The previous article on backpropagation, while closer to modern AI, already showed fewer of these connections. Nevertheless, even in that paper, the authors mentioned that since the biological brain does not follow backpropagation, we should look for more “natural” learning algorithms. </p>
+<p>Today, most AI research is categorized as a purely computational field, aiming for novel engineering ideas and constantly pushing SOTA in various projects. However, there’s a notable lack of research focused on understanding “why it works.” This shift sometimes raises questions about our goals: has the purpose of our research diverged from the past? Are we still on the path to achieving AGI? We’ll leave a question mark here and let time reveal the answer.</p>
+<p>Lastly, creating these articles has not been easy, so if you’ve read this far, please give it a like! (<em>＾3＾</em>)</p>
+<p><strong>References</strong></p>
+<p>[1] Fukushima, K. (1975). Cognitron: A self-organizing multilayered neural network. <em>Biological Cybernetics</em>, <em>20</em>(3–4), 121–136. <a target="_blank" rel="noopener" href="https://doi.org/10.1007/bf00342633">https://doi.org/10.1007/bf00342633</a></p>
+<p>[2] Singh, K., Ahuja, A., Chatterjee, T., Pritam, S., Varma, N., Jain, R., Sachdeva, M. S., Bansal, D., Trehan, A., Hajra, S., Kar, R., Basu, D., Peepa, K., Anil, I., Banashree, R., Apabi, H., Ghosh, S., Samanta, S., Chattopadhay, A., &amp; Bhattacharyya, M. (2019). 60th Annual Conference of Indian Society of Hematology &amp; Blood Transfusion (ISHBT) October 2019. <em>Indian Journal of Hematology and Blood Transfusion</em>, <em>35</em>(S1), 1–151</p>
+
+  </div>
+</article>
+
+
+
+      </div>
+      
+       <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="http://github.com/zixin2006">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://zixin2006.github.io/2023/07/15/Cognitron/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://zixin2006.github.io/2023/07/15/Cognitron/&text=Tracing Back to the Roots | Back-propagation &#34;Learning representations by back-propagating errors&#34;（1986)"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://zixin2006.github.io/2023/07/15/Cognitron/&title=Tracing Back to the Roots | Back-propagation &#34;Learning representations by back-propagating errors&#34;（1986)"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zixin2006.github.io/2023/07/15/Cognitron/&is_video=false&description=Tracing Back to the Roots | Back-propagation &#34;Learning representations by back-propagating errors&#34;（1986)"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Tracing Back to the Roots | Back-propagation &#34;Learning representations by back-propagating errors&#34;（1986)&body=Check out this article: https://zixin2006.github.io/2023/07/15/Cognitron/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://zixin2006.github.io/2023/07/15/Cognitron/&title=Tracing Back to the Roots | Back-propagation &#34;Learning representations by back-propagating errors&#34;（1986)"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://zixin2006.github.io/2023/07/15/Cognitron/&title=Tracing Back to the Roots | Back-propagation &#34;Learning representations by back-propagating errors&#34;（1986)"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://zixin2006.github.io/2023/07/15/Cognitron/&title=Tracing Back to the Roots | Back-propagation &#34;Learning representations by back-propagating errors&#34;（1986)"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://zixin2006.github.io/2023/07/15/Cognitron/&title=Tracing Back to the Roots | Back-propagation &#34;Learning representations by back-propagating errors&#34;（1986)"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://zixin2006.github.io/2023/07/15/Cognitron/&name=Tracing Back to the Roots | Back-propagation &#34;Learning representations by back-propagating errors&#34;（1986)&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+      
+      <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2024 Zixin Yu
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="http://github.com/zixin2006">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+      
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
+    </div>
+</body>
+</html>
