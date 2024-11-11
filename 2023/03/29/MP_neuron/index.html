@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Zixin&#39;s Multiverse.">
 <meta property="og:description" content="IntroductionThis article discusses the paper A Logical Calculus of the Ideas Immanent in Nervous Activity [1], published in 1943 by biologist Warren McCulloch and logician Walter Pitts. In Chinese, it">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://zixin2006.github.io/images/tbto.png">
+<meta property="og:image" content="https://zixin2006.github.io/images/tbto_11.png">
 <meta property="og:image" content="https://zixin2006.github.io/images/tbto_12.png">
 <meta property="og:image" content="https://zixin2006.github.io/images/tbto_13.png">
 <meta property="og:image" content="https://zixin2006.github.io/images/tbto_14.png">
@@ -23,11 +23,11 @@
 <meta property="og:image" content="https://zixin2006.github.io/images/tbto_18.png">
 <meta property="og:image" content="https://zixin2006.github.io/images/tbto_19.png">
 <meta property="article:published_time" content="2023-03-29T03:30:42.000Z">
-<meta property="article:modified_time" content="2024-11-11T00:51:47.162Z">
+<meta property="article:modified_time" content="2024-11-11T01:13:09.925Z">
 <meta property="article:author" content="Zixin Yu">
 <meta property="article:tag" content="Academics">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://zixin2006.github.io/images/tbto.png">
+<meta name="twitter:image" content="https://zixin2006.github.io/images/tbto_11.png">
     
     
         
@@ -68,7 +68,9 @@
     
 <script src="/lib/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 7.1.1"></head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.1.1"></head>
 
 <body>
     <div class="banner">
@@ -120,6 +122,8 @@
     <br/>
     <span id="actions">
       <ul>
+        
+        <li><a class="icon" href="/2023/04/07/Perceptron/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
         
         
         <li><a class="icon" href="/2023/03/12/Calvino/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
@@ -191,7 +195,7 @@
     <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>This article discusses the paper <em>A Logical Calculus of the Ideas Immanent in Nervous Activity</em> [1], published in 1943 by biologist Warren McCulloch and logician Walter Pitts. In Chinese, it translates to <em>The Logical Calculus of Ideas in Nervous Activity</em>. Before reading this article, I suggest reading the introductory piece to better understand the symbolic systems used in the paper. Recently, I’ve been diving into some “classical” papers (often regarded as foundational in modern AI development). However, finding the content challenging and lacking detailed analysis, I managed to piece together a basic understanding during my spare time. I hope this “back-to-basics” article can aid learners with similar interests who may not know where to start. 😊</p>
 <p>This article is around 5000 words, estimated reading time is 20 minutes.</p>
 <p>If we were attending a general introduction to artificial intelligence, the instructor would likely start with artificial neural networks (ANNs) and introduce the basic structure of input layers, hidden layers, and output layers, as shown on the right side of Figure 1. The weighted sum of neuron outputs, passed through an activation function $f$, intuitively aligns with our understanding of biological structures and the basic mechanism of neuron pulse generation. But how did scientists abstract the complex circuitry of neural activity (Figure 1 left) into the simplified ANN structure? The 1943 paper <em>A Logical Calculus of the Ideas Immanent in Nervous Activity</em> is widely recognized as the earliest work addressing this question. This article’s main contribution was the proposal of an idealized neuron model based on logical operations, allowing neurons to process information through threshold responses. It also demonstrated that neural networks could simulate any mechanical computing process and its invariance from a macro perspective. In short, as shown in Figure 1, it simplifies the complexity of neural physiological processes into logical propositions.</p>
-<p><img src="/images/tbto.png" alt="Tracing Back to the Roots - MP Neuron Diagram"></p>
+<p><img src="/images/tbto_11.png" alt="Image"></p>
 <center>Figure 1: (Left) A high-resolution detailed image of a small part of the human brain mapped by Google in 2021 [2]; (Right) Basic structure of neural networks [3].</center>
 
 <h2 id="Introduction-1"><a href="#Introduction-1" class="headerlink" title="Introduction"></a>Introduction</h2><p>The article begins with several key points in the Introduction (not analyzed here word-for-word, but you can search online for a PDF copy; the content, being rather old, can be difficult to read, especially for non-biology majors, like me):</p>
