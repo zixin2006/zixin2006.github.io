@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="IntroductionThis article discusses the paper A Logical Calculus of the Ideas Immanent in Nervous Activity [1], published in 1943 by biologist Warren McCulloch and logician Walter Pitts. In Chinese, it">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tracing Back to the Roots | The MP Neuron &quot;Logical Calculus of the Ideas Immanent in Nervous Activity&quot; (1943)">
+<meta property="og:url" content="https://zixin2006.github.io/2023/03/29/MP_neuron/index.html">
+<meta property="og:site_name" content="Zixin&#39;s Multiverse.">
+<meta property="og:description" content="IntroductionThis article discusses the paper A Logical Calculus of the Ideas Immanent in Nervous Activity [1], published in 1943 by biologist Warren McCulloch and logician Walter Pitts. In Chinese, it">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://zixin2006.github.io/images/tbto.png">
+<meta property="og:image" content="https://zixin2006.github.io/images/tbto_12.png">
+<meta property="og:image" content="https://zixin2006.github.io/images/tbto_13.png">
+<meta property="og:image" content="https://zixin2006.github.io/images/tbto_14.png">
+<meta property="og:image" content="https://zixin2006.github.io/images/tbto_15.png">
+<meta property="og:image" content="https://zixin2006.github.io/images/tbto_16.png">
+<meta property="og:image" content="https://zixin2006.github.io/images/tbto_17.png">
+<meta property="og:image" content="https://zixin2006.github.io/images/tbto_18.png">
+<meta property="og:image" content="https://zixin2006.github.io/images/tbto_19.png">
+<meta property="article:published_time" content="2023-03-29T03:30:42.000Z">
+<meta property="article:modified_time" content="2024-11-11T00:51:47.162Z">
+<meta property="article:author" content="Zixin Yu">
+<meta property="article:tag" content="Academics">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zixin2006.github.io/images/tbto.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/me.png">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Tracing Back to the Roots | The MP Neuron &#34;Logical Calculus of the Ideas Immanent in Nervous Activity&#34; (1943)</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+
+    
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    
+<script src="/lib/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body>
+    <div class="banner">
+<div id="blogtitel" class="blogtitel">Zixin&#39;s Multiverse.</div>
+<ul id="wrapper" class="wrapper">
+  <div class="sun">
+    <div class="star"></div>
+  </div>
+  <div class="mercury">
+    <div class="planet">
+      <div class="shadow"></div>
+    </div>
+  </div>
+  <div class="venus">
+    <div class="planet">
+      <div class="shadow"></div>
+    </div>
+  </div>
+  <div class="earth">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="mars">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="jupiter">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+</ul>
+</div>
+
+    <div class="background">
+      
+        <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="http://github.com/zixin2006">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2023/03/12/Calvino/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://zixin2006.github.io/2023/03/29/MP_neuron/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://zixin2006.github.io/2023/03/29/MP_neuron/&text=Tracing Back to the Roots | The MP Neuron &#34;Logical Calculus of the Ideas Immanent in Nervous Activity&#34; (1943)"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://zixin2006.github.io/2023/03/29/MP_neuron/&title=Tracing Back to the Roots | The MP Neuron &#34;Logical Calculus of the Ideas Immanent in Nervous Activity&#34; (1943)"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zixin2006.github.io/2023/03/29/MP_neuron/&is_video=false&description=Tracing Back to the Roots | The MP Neuron &#34;Logical Calculus of the Ideas Immanent in Nervous Activity&#34; (1943)"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Tracing Back to the Roots | The MP Neuron &#34;Logical Calculus of the Ideas Immanent in Nervous Activity&#34; (1943)&body=Check out this article: https://zixin2006.github.io/2023/03/29/MP_neuron/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://zixin2006.github.io/2023/03/29/MP_neuron/&title=Tracing Back to the Roots | The MP Neuron &#34;Logical Calculus of the Ideas Immanent in Nervous Activity&#34; (1943)"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://zixin2006.github.io/2023/03/29/MP_neuron/&title=Tracing Back to the Roots | The MP Neuron &#34;Logical Calculus of the Ideas Immanent in Nervous Activity&#34; (1943)"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://zixin2006.github.io/2023/03/29/MP_neuron/&title=Tracing Back to the Roots | The MP Neuron &#34;Logical Calculus of the Ideas Immanent in Nervous Activity&#34; (1943)"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://zixin2006.github.io/2023/03/29/MP_neuron/&title=Tracing Back to the Roots | The MP Neuron &#34;Logical Calculus of the Ideas Immanent in Nervous Activity&#34; (1943)"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://zixin2006.github.io/2023/03/29/MP_neuron/&name=Tracing Back to the Roots | The MP Neuron &#34;Logical Calculus of the Ideas Immanent in Nervous Activity&#34; (1943)&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction-1"><span class="toc-number">1.1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Definitions"><span class="toc-number">1.2.</span> <span class="toc-text">Definitions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Review"><span class="toc-number">1.3.</span> <span class="toc-text">Review</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Theorems-and-Simple-Proofs"><span class="toc-number">1.4.</span> <span class="toc-text">Theorems and Simple Proofs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Summary"><span class="toc-number">1.5.</span> <span class="toc-text">Summary</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">1.6.</span> <span class="toc-text">References</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+      
+      <div class="content index width mx-auto px2 my4">
+          
+          <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Tracing Back to the Roots | The MP Neuron &#34;Logical Calculus of the Ideas Immanent in Nervous Activity&#34; (1943)
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Zixin's Multiverse.</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2023-03-29T03:30:42.000Z" itemprop="datePublished">2023-03-29</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Academics/" rel="tag">Academics</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>This article discusses the paper <em>A Logical Calculus of the Ideas Immanent in Nervous Activity</em> [1], published in 1943 by biologist Warren McCulloch and logician Walter Pitts. In Chinese, it translates to <em>The Logical Calculus of Ideas in Nervous Activity</em>. Before reading this article, I suggest reading the introductory piece to better understand the symbolic systems used in the paper. Recently, I’ve been diving into some “classical” papers (often regarded as foundational in modern AI development). However, finding the content challenging and lacking detailed analysis, I managed to piece together a basic understanding during my spare time. I hope this “back-to-basics” article can aid learners with similar interests who may not know where to start. 😊</p>
+<p>This article is around 5000 words, estimated reading time is 20 minutes.</p>
+<p>If we were attending a general introduction to artificial intelligence, the instructor would likely start with artificial neural networks (ANNs) and introduce the basic structure of input layers, hidden layers, and output layers, as shown on the right side of Figure 1. The weighted sum of neuron outputs, passed through an activation function $f$, intuitively aligns with our understanding of biological structures and the basic mechanism of neuron pulse generation. But how did scientists abstract the complex circuitry of neural activity (Figure 1 left) into the simplified ANN structure? The 1943 paper <em>A Logical Calculus of the Ideas Immanent in Nervous Activity</em> is widely recognized as the earliest work addressing this question. This article’s main contribution was the proposal of an idealized neuron model based on logical operations, allowing neurons to process information through threshold responses. It also demonstrated that neural networks could simulate any mechanical computing process and its invariance from a macro perspective. In short, as shown in Figure 1, it simplifies the complexity of neural physiological processes into logical propositions.</p>
+<p><img src="/images/tbto.png" alt="Tracing Back to the Roots - MP Neuron Diagram"></p>
+<center>Figure 1: (Left) A high-resolution detailed image of a small part of the human brain mapped by Google in 2021 [2]; (Right) Basic structure of neural networks [3].</center>
+
+<h2 id="Introduction-1"><a href="#Introduction-1" class="headerlink" title="Introduction"></a>Introduction</h2><p>The article begins with several key points in the Introduction (not analyzed here word-for-word, but you can search online for a PDF copy; the content, being rather old, can be difficult to read, especially for non-biology majors, like me):</p>
+<ol>
+<li>Neural activity has an “all-or-none” nature (neural activity is either present or absent, akin to 0 or 1, true or false).</li>
+<li>To trigger a pulse in the next neuron, a certain number of synapses must activate within a specific time frame (each neuron has a threshold independent of its position and previous activity).</li>
+<li>The only significant delay in the nervous system is synaptic conduction delay (axon delay can be ignored).</li>
+<li>Inhibitory synapses prevent neuron activation at certain times (explains the refractory period of neurons using inhibitory synapses).</li>
+<li>The structure of neural networks does not change over time (long-term phenomena like learning and extinction are broadly equivalent to the original network).</li>
+</ol>
+<p>Based on these assumptions, we define some symbols. If this part seems hard to understand, consider reading the preliminary article.</p>
+<h2 id="Definitions"><a href="#Definitions" class="headerlink" title="Definitions"></a>Definitions</h2><p>We first define a functor $S$ whose value for a given property $P$ is the property held when $P$ satisfies its predecessor. The expression is given by<br>$$<br>S(P)(t) &#x3D; P(Kx), \quad t &#x3D; x’<br>$$<br>where $K$ is a numerical operator, and $t$ denotes the successor of $x$. This expression may look complex, but it essentially means that $S(P)(t) &#x3D; P(t-1)$. Here, the parameter in the parentheses on the left side is often omitted, making it a predicate, $[\textbf{Pr}]$, and $S^2 \mathbf{Pr} &#x3D; S(S(\mathbf{Pr}))$.</p>
+<p>Now, we define the structure of a neural network $\mathcal{N}$, which includes neurons $c_1, c_2, \ldots, c_n$. Let $N_i(t)$ represent the state of neuron $c_i$ at time $t$, describing whether neuron $c_i$ fires at time $t$. Sometimes, we use the object language and denote it as $N_i$. The boundary neurons of $\mathcal{N}$ are defined as neurons without axons connecting to their synapses. <strong>Boundary neurons do not receive synaptic connections, so their input signals act directly on other parts of the network, unaffected by other neurons in the network (“inputs”). This property allows us to break down complex neural activities into simpler components for understanding</strong>. Let $N_1, \ldots, N_p$ represent the boundary neurons and $N_{p+1}, \ldots, N_n$ represent the other neurons. The solution of such a neural network takes the form:<br>$$<br>S_i: N_{p+1}(z_1) \equiv Pr_i(N_1, \ldots, N_p, z_1)<br>$$<br>where $Pr_i$ contains only one free variable $z_1$ and may include some constant sentences $[\mathbf{sa}]$. Furthermore, each $S_i$ holds for $\mathcal{N}$. Next, we define two key terms: narrow realizability and extended realizability.</p>
+<p><img src="/images/tbto_12.png" alt="Image"></p>
+<center>Figure 2: Original definition of narrow realizability (i.n.s.) and extended realizability [1].</center>
+
+<p>Oppositely, consider a predicate $Pr_1(^1{p_1}^1, ^1{p_2}^1, \ldots, ^1{p_p}^1, z_1, s)$. It is called narrowly realizable if there exists a network $\mathcal{N}$ with a series of $N_i$ such that $N_1(z_1) \equiv Pr_1(N_1, N_2, \ldots, z_1, sa_1)$ holds. Subsequently, we define extended realizability, meaning that $S^n(Pr_1)(p_1, \ldots, p_p, z_1, s)$ is narrowly realizable for some $n$.</p>
+<p>To interpret these definitions, narrow realizability is a stringent condition requiring a specific neural network structure to directly achieve a particular state described by the predicate through specific neuron arrangements and input substitutions. Conversely, extended realizability is a more lenient condition, allowing multiple applications of functor $S$ to transform and expand propositions until the expanded proposition is narrowly realizable.</p>
+<p><img src="/images/tbto_13.png" alt="Image"></p>
+<center>Figure 3: A simple neural network.</center>
+
+<p>Let’s consider a simple example (Figure 3). First, take the expression $N_3(z_1) \equiv Pr_(N_1, N_2, z_1)$. Since $N_3(t) \equiv N_1(t-1) \land N_2(t-1)$, this neural network is narrowly realizable by the i.n.s. definition. For $N_5(z_1) \equiv Pr(N_1, N_2, z)$, this expression is not directly realizable. Still, we can utilize intermediate neurons cleverly to derive a neural network since $N_5(t) \equiv N_4(t-1) \lor N_3(t-1)$, and according to $N_3(t) \equiv N_1(t-1) \land N_2(t-1)$, we get $N_5(t) \equiv N_1(t-2) \land N_2(t-2)$. As $S^2 Pr$ is narrowly realizable, $Pr$ is extendedly realizable, as shown in the neural network in Figure 3.</p>
+<p>Finally, we arrive at the last definition! The paper defines Temporal Propositional Expressions (TPE) using recursive rules.</p>
+<p><img src="/images/tbto_14.png" alt="Image"></p>
+<center>Figure 4: Recursive definition of Temporal Propositional Expressions (TPE) [1].</center>
+
+<p>First, $p[z_1]$ is the basic temporal propositional expression, where $p_1$ is a predicate variable and $z_1$ is a time point. Secondly, the definition states that the result of applying functor $S$, logical “or,” “and,” or “not” operations to TPEs $S_1$ and $S_2$ is still a TPE. Lastly, apart from the above forms, no other forms constitute TPEs—this ensures the completeness of the definition.</p>
+<h2 id="Review"><a href="#Review" class="headerlink" title="Review"></a>Review</h2><p>We defined functor $S$, solutions for neural networks, narrow and extended realizability, and TPEs. Before moving on to proofs and examples, let’s review the core questions:</p>
+<ol>
+<li>Find an effective method to obtain a computable set of $S$ that forms the solution for any given network (calculate the behavior of any network).</li>
+<li>Describe a set of realizable solutions.</li>
+</ol>
+<p>In simple terms, the problems are (1) to calculate any network’s behavior and (2) to determine networks that manifest as specific states.</p>
+<h2 id="Theorems-and-Simple-Proofs"><a href="#Theorems-and-Simple-Proofs" class="headerlink" title="Theorems and Simple Proofs"></a>Theorems and Simple Proofs</h2><p><em>Note 1: A 0th-order neural network refers to a network without circular structures. The latter half of the paper provides detailed explanations for nets with circles, which are not covered here.</em></p>
+<p><strong>Theorem 1.</strong> <em>Every 0th-order net can be solved in terms of Temporal Propositional Expressions (TPEs).</em></p>
+<p>Let $c_i$ be any neuron in $\mathcal{N}$ with a threshold $\beta_i &gt; 0$. Let $c_{i1}, c_{i2}, \ldots, c_{ip}$ represent the neurons with excitatory synapses on $c_i$, with synaptic weights $n_{i1}, n_{i2}, \ldots, n_{ip}$. Let $c_{j1}, c_{j2}, \ldots, c_{jq}$ represent the neurons with inhibitory synapses on $c_i$. Let $\kappa_i$ be the class of subsets of ${n_{i1}, n_{i2}, \ldots, n_{ip}}$ such that the sum of these subsets exceeds $\beta_i$ (capable of activating $c_i$). Based on the assumptions introduced in the Introduction, we can write<br>$$<br>N_i(z_1) \equiv S \left{\prod_{m&#x3D;1}^q \lnot N_{jm}(z_1) \land \sum_{\alpha \in \kappa_i} \prod_{s \in \alpha} N_{is}(z_1) \right}<br>$$<br>where $\sum$ and $\prod$ represent finite disjunction and conjunction, respectively. This expression may look complex, but its meaning is simple. It states that neuron $c_i$ fires at time $z_1$ if and only if at time $z_1 - 1$, none of the inhibitory neurons are firing and there exists a subset of excitatory neurons whose cumulative pulse value exceeds the threshold $\beta_i$, as illustrated in Figure 5.</p>
+<p><img src="/images/tbto_15.png" alt="Image"></p>
+<center>Figure 5: A neural network composed of excitatory and inhibitory neurons.</center>
+
+<p>Assuming a threshold of two, it’s clear that $N_4$ firing requires both $N_1$ and $N_2$ to be true (i.e., $c_1$ and $c_2$ fired in the previous moment) and $N_3$ to be false (i.e., the inhibitory neuron $c_3$ was not activated). Since such an expression can be written for each non-boundary neuron, we can replace each $N_{jm}$ and $N_{is}$ with their equivalent expressions until $N_i(z_1)$ is entirely equivalent to a propositional logic expression formed by boundary neurons, thus deriving the solution of a neural network.</p>
+<p><strong>Theorem 2.</strong> <em>Every TPE is realizable by a 0th-order network in the extended sense.</em></p>
+<p><em>Note 2: The term “realizable in the extended sense” is abbreviated as “realizable” in the proof.</em></p>
+<p>The second theorem states that for any neuron state description, there exists a 0th-order network that realizes it in the extended sense. The proof of Theorem 2 provides a recursive method for constructing a 0th-order network that realizes a TPE.</p>
+<p>Since functor $S$ essentially acts as a time operator, it commutes with basic logic operations (disjunction, conjunction, negation). Thus, if network $\mathcal{N}$ can realize $S_i$ at the current time, we can achieve $S_i$ at the previous time by introducing appropriate delay neurons. Let’s look at an example:</p>
+<p>Consider a proposition $S_i &#x3D; p_1(z_1) \lor p_2(z_1)$, and suppose $S_i$ is narrowly realizable. Applying the functor $S$ and using its commutativity with logic operations, we get<br>$$<br>S(S_i) &#x3D; S(p_1(z_1) \lor p_2(z_1)) &#x3D; S(p_1(z_1)) \lor S(p_2(z_1))<br>$$<br>$S$ is a time operator, so $S(p_1(z_1))$ and $S(p_2(z_1))$ describe the states of $p_1(z_1)$ and $p_2(z_1)$ at the previous time point. By extending network $\mathcal{N}$ with appropriate delay neurons, we can realize $SS_i$ in the narrow sense.</p>
+<p><img src="/images/tbto_16.png" alt="Image"></p>
+<center>Figure 6: Achieving a neural network by making neuron 3 an intermediate neuron.</center>
+
+<p>Thus, if $S_i$ is narrowly realizable, its result after $n$ applications of $S$ is still narrowly realizable because we can add intermediate neurons indefinitely. If $S_1$ and $S_2$ are both narrowly realizable, then $S^m S_1$ and $S^n S_2$ are also narrowly realizable. Now consider the four basic components of neural networks: $S(p_1(z_1))$, $S(p_1(z_1) \lor p_2(z_1))$, $S(p_1(z_1) \land p_2(z_1))$, and $S(p_1(z_1) \land \lnot p_2(z_1))$ (Figure 7), all of which are narrowly realizable.</p>
+<p><img src="/images/tbto_17.png" alt="Image"></p>
+<center>Figure 7: Four basic components of a neural network.</center>
+
+<p>Based on the previous conclusions, $S^{m+n+1}(p_1(z_1))$, $S^{m+n+1}(p_1(z_1) \lor p_2(z_1))$, $S^{m+n+1}(p_1(z_1) \land p_2(z_1))$, and $S^{m+n+1}(p_1(z_1) \land \lnot p_2(z_1))$ are also narrowly realizable. By the definition of extended realizability, these primitive propositions are extendedly realizable. By logically combining these basic structures, more complex neural networks can be realized in the extended sense, enabling the realization of any TPE.</p>
+<p><strong>Theorem 3.</strong> <em>Let there be a complex sentence $S_1$ built up in any manner out of elementary sentences of the form $p(z_1-zz)$, where $zz$ is any numeral, by any of the propositional connections: negation, disjunction, conjunction, implication, and equivalence. Then $S_1$ is a</em> TPE <em>if and only if it is false when its constituent $p(z_1-zz)$ are all assumed false—i.e., replaced by false sentences—or that the last line in its truth table contains an ‘F’, or there is no term in its Hilbert disjunctive normal form composed exclusively of negated terms.</em></p>
+<p>Though complex at first glance, Theorem 3 provides the criterion for determining whether an expression is a TPE. In other words, it gives a method for determining if an expression is a TPE. There are three equivalent methods:</p>
+<ol>
+<li>The composite sentence is false when all its basic sentences are false.</li>
+<li>The last line of the truth table contains “false.”</li>
+<li>There is no term in its Hilbert Disjunctive Normal Form (HDNF) composed solely of negated terms.</li>
+</ol>
+<p>Let’s examine a few examples for each condition:</p>
+<ol>
+<li>For the composite sentence $S_1 &#x3D; p(z_1 - 1) \land q(z_1 - 2)$, where $p(z_1 - 1)$ and $q(z_1 - 2)$ are basic propositions. When both $p(z_1 - 1)$ and $q(z_1 - 2)$ are false, $S_1$ is also false, i.e., $S_1 &#x3D; \text{False} \land \text{False} &#x3D; \text{False}$. Therefore, $S_1$ satisfies the first condition and is a TPE.</li>
+<li>For the composite sentence $S_2 &#x3D; p(z_1 - 1) \lor q(z_1 - 2)$, the truth table is as follows:<br><img src="/images/tbto_18.png" alt="Image"><br>As shown, when both $p(z_1 - 1)$ and $q(z_1 - 2)$ are false, $S_2$ is also false. Hence, $S_2$ satisfies the second condition.</li>
+<li>For the composite sentence $S_3 &#x3D; \neg p(z_1 - 1) \land \neg q(z_1 - 2)$, converting it to HDNF gives $S_3 &#x3D; \neg p(z_1 - 1) \land \neg q(z_1 - 2)$. In HDNF, the only term $\neg p(z_1 - 1) \land \neg q(z_1 - 2)$ consists solely of negated terms. Therefore, $S_3$ does not meet the third condition and is not a TPE.</li>
+</ol>
+<p>Now, let’s apply these theorems to implement a neural network. Consider a scenario: when an ice cube touches and then leaves our skin for a moment, we feel heat before coolness; but if it stays longer, we only feel a chill. To model this situation, let $N_1$ and $N_2$ represent “heat” and “cold” receptors, respectively, and let $N_3$ and $N_4$ represent neurons sensing heat and cold. We assume that $N_4$ senses cold only if the cold touch persists for two time units, yielding the following sentences:<br>$$<br>\begin{align*}<br>&amp;N_3(t) \equiv N_1(t-1) \lor N_2(t-3) \land \lnot N_2(t-2) \<br>&amp;N_4(t) \equiv N_2(t-2) \land N_2(t-1)<br>\end{align*}<br>$$<br>Since these sentences are already in Hilbert Disjunctive Normal Form (HDNF), Theorem 3 indicates that both $N_3(t)$ and $N_4(t)$ are TPEs. Given this, Theorem 2 can construct a neural network in the following form:</p>
+<p><img src="/images/tbto_19.png" alt="Image"></p>
+<p>Finally, the paper mentions that different inhibition phenomena are broadly equivalent (2) extinction and learning are equivalent to absolute inhibition. If these two conclusions are proven, it indicates that the current structure simulates actual neural networks, allowing us to compute any network’s behavior and determine networks manifesting specific states. This part is briefly discussed in the original paper, so we will not explain the details it here.</p>
+<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>The McCulloch-Pitts neuron model simplifies neuron behavior into logical operations, executing basic logic through “all-or-none” responses. Its significance lies in formalizing the behavior of neural systems, demonstrating the Turing completeness of neural networks, capable of simulating any state. This groundbreaking theory laid a solid foundation for the Perceptron and propelled the development of artificial neural networks (ANNs). (Spoiler alert: the next topic will be Perceptron or theories related to emergence, expected within three days 🤞).</p>
+<p><strong>End</strong></p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[1] McCulloch, W. S., &amp; Pitts, W. (1943). A logical calculus of the ideas immanent in nervous activity. <em>The Bulletin of Mathematical Biophysics</em>, <em>5</em>(4), 115–133. <a target="_blank" rel="noopener" href="https://doi.org/10.1007/bf02478259">https://doi.org/10.1007/bf02478259</a><br>[2] Marshall, M. (2021, June 7). <em>Google has mapped a piece of the human brain in the most detail ever.</em> New Scientist; New Scientist. <a target="_blank" rel="noopener" href="https://www.newscientist.com/article/2279937-google-has-mapped-a-piece-of-human-brain-in-the-most-detail-ever/">https://www.newscientist.com/article/2279937-google-has-mapped-a-piece-of-human-brain-in-the-most-detail-ever/</a><br>[3] <em>A Friendly Introduction to [Deep] Neural Networks | KNIME</em>. (2021). KNIME. <a target="_blank" rel="noopener" href="https://www.knime.com/blog/a-friendly-introduction-to-deep-neural-networks">https://www.knime.com/blog/a-friendly-introduction-to-deep-neural-networks</a></p>
+
+  </div>
+</article>
+
+
+
+      </div>
+      
+       <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="http://github.com/zixin2006">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction-1"><span class="toc-number">1.1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Definitions"><span class="toc-number">1.2.</span> <span class="toc-text">Definitions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Review"><span class="toc-number">1.3.</span> <span class="toc-text">Review</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Theorems-and-Simple-Proofs"><span class="toc-number">1.4.</span> <span class="toc-text">Theorems and Simple Proofs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Summary"><span class="toc-number">1.5.</span> <span class="toc-text">Summary</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">1.6.</span> <span class="toc-text">References</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://zixin2006.github.io/2023/03/29/MP_neuron/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://zixin2006.github.io/2023/03/29/MP_neuron/&text=Tracing Back to the Roots | The MP Neuron &#34;Logical Calculus of the Ideas Immanent in Nervous Activity&#34; (1943)"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://zixin2006.github.io/2023/03/29/MP_neuron/&title=Tracing Back to the Roots | The MP Neuron &#34;Logical Calculus of the Ideas Immanent in Nervous Activity&#34; (1943)"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://zixin2006.github.io/2023/03/29/MP_neuron/&is_video=false&description=Tracing Back to the Roots | The MP Neuron &#34;Logical Calculus of the Ideas Immanent in Nervous Activity&#34; (1943)"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Tracing Back to the Roots | The MP Neuron &#34;Logical Calculus of the Ideas Immanent in Nervous Activity&#34; (1943)&body=Check out this article: https://zixin2006.github.io/2023/03/29/MP_neuron/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://zixin2006.github.io/2023/03/29/MP_neuron/&title=Tracing Back to the Roots | The MP Neuron &#34;Logical Calculus of the Ideas Immanent in Nervous Activity&#34; (1943)"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://zixin2006.github.io/2023/03/29/MP_neuron/&title=Tracing Back to the Roots | The MP Neuron &#34;Logical Calculus of the Ideas Immanent in Nervous Activity&#34; (1943)"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://zixin2006.github.io/2023/03/29/MP_neuron/&title=Tracing Back to the Roots | The MP Neuron &#34;Logical Calculus of the Ideas Immanent in Nervous Activity&#34; (1943)"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://zixin2006.github.io/2023/03/29/MP_neuron/&title=Tracing Back to the Roots | The MP Neuron &#34;Logical Calculus of the Ideas Immanent in Nervous Activity&#34; (1943)"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://zixin2006.github.io/2023/03/29/MP_neuron/&name=Tracing Back to the Roots | The MP Neuron &#34;Logical Calculus of the Ideas Immanent in Nervous Activity&#34; (1943)&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+      
+      <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2024 Zixin Yu
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="http://github.com/zixin2006">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+      
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
+    </div>
+</body>
+</html>
